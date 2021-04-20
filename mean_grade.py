@@ -38,7 +38,7 @@ try:
     
     course_links = [course.find_element_by_class_name("card-link").get_attribute("href") for course in  elements.find_elements_by_class_name("ladok-list-kort")]
     grades = []
-    for link in course_links[:1]:
+    for link in course_links:
         try:
             driver.get(link)
             time.sleep(0.5)
