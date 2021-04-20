@@ -66,4 +66,4 @@ try:
     else:
         print("Mean grade: {}".format(grade_mean))
 finally:
-    pass
+    driver.close()
