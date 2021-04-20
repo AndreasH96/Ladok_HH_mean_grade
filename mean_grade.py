@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from getpass import getpass
 # First, read user input 
 plot_result_dict = {"y":True,"n":False}
-institution = input("Institution\n")
+#institution = input("Institution\n")
 username = input("Username:\n")
 password = getpass("Password:\n")
 plot_result = plot_result_dict[input("Plot results? (y/n):\n").lower()]
@@ -22,7 +22,7 @@ try:
     driver.get("https://www.student.ladok.se/student/app/studentwebb/min-utbildning/avklarade")
     driver.find_element_by_class_name("btn-primary").click()
     time.sleep(0.5)
-    driver.find_element_by_id("searchinput").send_keys(institution)
+    driver.find_element_by_id("searchinput").send_keys("Halmstad University")
     time.sleep(0.5)
     driver.find_element_by_class_name("identityprovider").click()
     time.sleep(0.5)
