@@ -10,6 +10,8 @@ plot_result_dict = {"y":True,"n":False}
 username = input("Username:\n")
 password = getpass("Password:\n")
 plot_result = plot_result_dict[input("Plot results? (y/n):\n").lower()]
+if plot_result:
+    save_figure = plot_result_dict[input("Save plot? (y/n)\n").lower()]
 grade_pattern = "\d|U"
 
 # Then start Chrome
@@ -37,12 +39,6 @@ try:
     time.sleep(0.5)
     
     elements = driver.find_element_by_class_name("ladok-accordian")
-    
-
-
-
-
-
     course_links = [course.find_element_by_class_name("card-link").get_attribute("href") for course in  elements.find_elements_by_class_name("ladok-list-kort")]
     grades = []
     for link in course_links:
@@ -69,7 +65,8 @@ try:
         grade_5 = list(filter(lambda x: x == 5, grades))
         plt.bar(x=[2,3,4,5],height=[len(grade_U),len(grade_3),len(grade_4),len(grade_5)])
         plt.xticks(ticks=[2,3,4,5],labels=["U",3,4,5])
-        plt.savefig("result.png")
+        if save_figure:
+            plt.savefig("result.png")
         plt.show()
     else:
         print("Mean grade: {}".format(grade_mean))
